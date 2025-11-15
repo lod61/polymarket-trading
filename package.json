@@ -1,0 +1,21 @@
+{
+  "name": "polymarket-trading-bot",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Polymarket automated trading bot for crypto markets",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "bun run --watch src/index.ts",
+    "start": "bun run src/index.ts",
+    "collector": "bun run src/data-collector.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ethers": "^6.15.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.3"
+  }
+}

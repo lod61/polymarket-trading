@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+bun.lockb
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Data files
+data/
+*.log
+*.log.*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Railway
+.railway/
