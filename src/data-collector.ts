@@ -57,7 +57,7 @@ interface AnalysisRecord {
   marketEndTime: number | null;
 }
 
-class DataCollector {
+export class DataCollector {
   private polymarketClient: PolymarketClientSimple;
   private strategy: ShortTermStrategy;
   private chainlinkClient: ChainlinkClient;
@@ -405,6 +405,7 @@ class DataCollector {
   }
 }
 
+// 如果直接运行此文件，启动数据收集器
 // 主函数
 async function main() {
   const collector = new DataCollector();
@@ -426,9 +427,12 @@ async function main() {
   await collector.start();
 }
 
-// 运行
-main().catch(error => {
-  console.error('❌ 致命错误:', error);
-  process.exit(1);
-});
+// 只在直接运行时执行（不在被导入时执行）
+// @ts-ignore - Bun runtime check
+if (typeof Bun !== 'undefined' && import.meta.main) {
+  main().catch(error => {
+    console.error('❌ 致命错误:', error);
+    process.exit(1);
+  });
+}
 

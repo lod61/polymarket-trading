@@ -31,9 +31,32 @@ bun install
 
 ### 2. 配置环境变量
 
-复制 `env.example` 到 `.env` 并填写：
+复制 `env.example` 到 `.env`：
+
+```bash
+cp env.example .env
+```
+
+#### 选项 A: 数据收集模式（推荐，不需要 API Key）
+
+编辑 `.env`，设置：
 
 ```env
+# 数据收集模式（不需要 API Key）
+DATA_COLLECTION_MODE=true
+
+# 可选：Chainlink配置
+POLYGON_RPC_URL=https://polygon-rpc.com
+```
+
+#### 选项 B: 自动交易模式（需要 API Key）
+
+编辑 `.env`，设置：
+
+```env
+# 自动交易模式
+DATA_COLLECTION_MODE=false
+
 # 必需：Polymarket API配置
 POLYMARKET_API_KEY=your_api_key_here
 POLYMARKET_PRIVATE_KEY=0x_your_private_key_here
@@ -54,10 +77,10 @@ POLL_INTERVAL_MS=30000
 ### 3. 运行
 
 ```bash
-# 自动交易模式
+# 自动检测模式（如果没有 API Key，自动使用数据收集模式）
 bun run start
 
-# 数据收集模式（只记录，不下单）
+# 或明确指定数据收集模式
 bun run collector
 ```
 
